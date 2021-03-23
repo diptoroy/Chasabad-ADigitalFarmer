@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Chasabad - A Digital Farmer"

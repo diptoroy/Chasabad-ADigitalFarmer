@@ -1,9 +1,14 @@
 package com.ddev.chasabad_adigitalfarmer.view.fragment
 
 import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -13,6 +18,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -22,14 +28,15 @@ import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
 import com.ddev.chasabad_adigitalfarmer.util.Constants
-import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.LAT
-import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.LON
+import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_ID
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.REQUEST_PERMISSION_REQUEST_CODE
+import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.uvIndex
 import com.ddev.chasabad_adigitalfarmer.view.adapter.MenuAdapter
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
@@ -44,8 +51,8 @@ class MainFragment : Fragment() {
     private val menuAdapter by lazy { MenuAdapter() }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
@@ -61,7 +68,7 @@ class MainFragment : Fragment() {
 
 //        menu_recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         menu_recyclerView.layoutManager =
-            StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         menu_recyclerView.setHasFixedSize(true)
         val menuList = ArrayList<MenuData>()
         menuList.add(MenuData(R.drawable.plant, "Menu 1"))
@@ -73,27 +80,28 @@ class MainFragment : Fragment() {
         menu_recyclerView.adapter = menuAdapter
 
         if (context?.let {
-                ContextCompat.checkSelfPermission(
-                    it, android.Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED) {
+                    ContextCompat.checkSelfPermission(
+                            it, android.Manifest.permission.ACCESS_FINE_LOCATION
+                    )
+                } != PackageManager.PERMISSION_GRANTED) {
             activity?.let {
                 ActivityCompat.requestPermissions(
-                    it,
-                    arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_PERMISSION_REQUEST_CODE
+                        it,
+                        arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                        REQUEST_PERMISSION_REQUEST_CODE
                 )
             }
         } else {
             getCurrentLocation()
+
         }
 
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_PERMISSION_REQUEST_CODE && grantResults.isNotEmpty()) {
@@ -118,81 +126,113 @@ class MainFragment : Fragment() {
         var addresses: List<Address>
 
         if (context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED && context?.let {
-                ActivityCompat.checkSelfPermission(
-                    it,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-            } != PackageManager.PERMISSION_GRANTED
+                    ActivityCompat.checkSelfPermission(
+                            it,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                    )
+                } != PackageManager.PERMISSION_GRANTED && context?.let {
+                    ActivityCompat.checkSelfPermission(
+                            it,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                    )
+                } != PackageManager.PERMISSION_GRANTED
         ) {
             return
         }
         LocationServices.getFusedLocationProviderClient(context)
-            .requestLocationUpdates(locationRequest, object : LocationCallback() {
-                override fun onLocationResult(locationResult: LocationResult?) {
-                    super.onLocationResult(locationResult)
-                    LocationServices.getFusedLocationProviderClient(context)
-                        .removeLocationUpdates(this)
-                    if (locationResult != null && locationResult.locations.size > 0) {
-                        var locIndex = locationResult.locations.size - 1
+                .requestLocationUpdates(locationRequest, object : LocationCallback() {
+                    override fun onLocationResult(locationResult: LocationResult?) {
+                        super.onLocationResult(locationResult)
+                        LocationServices.getFusedLocationProviderClient(context)
+                                .removeLocationUpdates(this)
+                        if (locationResult != null && locationResult.locations.size > 0) {
+                            var locIndex = locationResult.locations.size - 1
 
-                        lat = locationResult.locations.get(locIndex).latitude.toString()
-                        lon = locationResult.locations.get(locIndex).longitude.toString()
-
-                        addresses = geocoder.getFromLocation(lat.toDouble(), lon.toDouble(), 1)
-                        var address: String = addresses[0].getAddressLine(0)
-                        locationText.text = address
-
-                        getData()
-
-
+                            lat = locationResult.locations.get(locIndex).latitude.toString()
+                            lon = locationResult.locations.get(locIndex).longitude.toString()
+//                            try {
+//                                addresses = geocoder.getFromLocation(lat.toDouble(), lon.toDouble(), 1)
+//                                var address: String = addresses[0].getAddressLine(0)
+//                                locationText.text = address
+//                                getData()
+//                            }catch (e:Exception){
+//                                Log.d("Dipto",e.toString())
+//                            }
+                            getData()
+                        }
                     }
-                }
-            }, Looper.getMainLooper())
+                }, Looper.getMainLooper())
 
     }
 
-    fun getData(){
+    private fun getData() {
         viewModel.getUviData(lat, lon, Constants.APP_ID)
         activity?.let { it ->
             viewModel.dailyDataResponse.observe(
-                it,
-                androidx.lifecycle.Observer { response ->
-                    response.body()?.toString()?.let { Log.d("all", it) }
-                    val temp: Double? =
-                        (response.body()?.current?.temp?.minus(273.5))
-                    val temperature: String = String.format("%.2f", temp)
-                    val humidity: String =
-                        response.body()?.current?.humidity.toString()
-                    val wind: String =
-                        response.body()?.current?.wind_speed.toString()
-                    val pressure: String =
-                        response.body()?.current?.pressure.toString()
-                    val riseUnixSeconds: Int? = response.body()?.current?.sunrise
-                    val setUnixSeconds: Int? = response.body()?.current?.sunset
+                    it,
+                    androidx.lifecycle.Observer { response ->
+                        response.body()?.toString()?.let { Log.d("all", it) }
+                        val temp: Double? =
+                                (response.body()?.current?.temp?.minus(273.5))
+                        val temperature: String = String.format("%.2f", temp)
+                        val humidity: String =
+                                response.body()?.current?.humidity.toString()
+                        val wind: String =
+                                response.body()?.current?.wind_speed.toString()
+                        val pressure: String =
+                                response.body()?.current?.pressure.toString()
+                        val riseUnixSeconds: Int? = response.body()?.current?.sunrise
+                        val setUnixSeconds: Int? = response.body()?.current?.sunset
 
-                    val rDate: Date? =
-                        riseUnixSeconds?.times(1000L)?.let { java.util.Date(it) }
-                    val sDate: Date? =
-                        setUnixSeconds?.times(1000L)?.let { java.util.Date(it) }
-                    //get current date and time using format
-                    //pattern likes "yyyy-MM-dd HH:mm"
-                    val timeFormat = SimpleDateFormat("HH:mm a")
-                    timeFormat.timeZone = java.util.TimeZone.getTimeZone("GMT+6");
-                    val sunrise: String = timeFormat.format(rDate)
-                    val sunset: String = timeFormat.format(sDate)
+                        val uvi: Double? = response.body()?.current?.uvi
+                        val rDate: Date? =
+                                riseUnixSeconds?.times(1000L)?.let { java.util.Date(it) }
+                        val sDate: Date? =
+                                setUnixSeconds?.times(1000L)?.let { java.util.Date(it) }
+                        //get current date and time using format
+                        //pattern likes "yyyy-MM-dd HH:mm"
+                        val timeFormat = SimpleDateFormat("HH:mm a")
+                        timeFormat.timeZone = java.util.TimeZone.getTimeZone("GMT+6");
+                        val sunrise: String = timeFormat.format(rDate)
+                        val sunset: String = timeFormat.format(sDate)
 
-                    pressaure_text.text = "$pressure%"
-                    wind_text.text = "$wind km/h"
-                    humidity_yext.text = "$humidity%"
-                    tempText.text = "$temperature ° C"
-                    riseText.text = sunrise
-                    setText.text = sunset
-                })
+                        pressaure_text.text = "$pressure%"
+                        wind_text.text = "$wind km/h"
+                        humidity_yext.text = "$humidity%"
+                        tempText.text = "$temperature ° C"
+                        riseText.text = sunrise
+                        setText.text = sunset
+                        if (uvi != null) {
+                            if (uvi > uvIndex ) {
+                                createNotificationChannel()
+                                val notificationBuilder = context?.let { noti -> androidx.core.app.NotificationCompat.Builder(noti, Constants.CHANNEL_ID) }
+                                        ?.setContentTitle("UV Threat!")
+                                        ?.setContentText("Please Stay in Home.")
+                                        ?.setSmallIcon(R.drawable.uvimage)
+                                        ?.setPriority(androidx.core.app.NotificationCompat.PRIORITY_HIGH)
+                                        ?.build()
+
+                                val notificationManager = context?.let { it1 -> NotificationManagerCompat.from(it1) }
+
+                                notificationManager?.notify(NOTIFICATION_ID, notificationBuilder!!)
+                            }
+                        }
+
+
+
+                    })
+        }
+    }
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(Constants.CHANNEL_ID, Constants.CHANNEL_NAME,
+                    NotificationManager.IMPORTANCE_DEFAULT).apply {
+                lightColor = Color.RED
+                enableLights(true)
+            }
+            val manager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
         }
     }
 

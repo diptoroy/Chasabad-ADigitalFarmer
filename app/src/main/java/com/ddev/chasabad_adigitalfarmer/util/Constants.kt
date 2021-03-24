@@ -7,6 +7,13 @@ class Constants {
         const val LAT = "25.743893"
         const val LON = "89.275230"
         const val REQUEST_PERMISSION_REQUEST_CODE = 2021
+
+        //Notification
+        val CHANNEL_ID = "channelID"
+        val CHANNEL_NAME = "channelName"
+        val NOTIFICATION_ID = 0
+
+        val uvIndex: Double = 7.99
     }
 }
 

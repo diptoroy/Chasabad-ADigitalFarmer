@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModelFactory
@@ -36,7 +37,6 @@ import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
@@ -68,13 +68,15 @@ class MainFragment : Fragment() {
 
 //        menu_recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
         menu_recyclerView.layoutManager =
-                StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+                StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
         menu_recyclerView.setHasFixedSize(true)
         val menuList = ArrayList<MenuData>()
         menuList.add(MenuData(R.drawable.plant, "Menu 1"))
         menuList.add(MenuData(R.drawable.plant, "Menu 2"))
         menuList.add(MenuData(R.drawable.plant, "Menu 3"))
         menuList.add(MenuData(R.drawable.plant, "Menu 4"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 5"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 6"))
         Log.d("menu", menuList.toString())
         menuAdapter.setData(menuList)
         menu_recyclerView.adapter = menuAdapter
@@ -235,5 +237,7 @@ class MainFragment : Fragment() {
             manager.createNotificationChannel(channel)
         }
     }
+
+
 
 }

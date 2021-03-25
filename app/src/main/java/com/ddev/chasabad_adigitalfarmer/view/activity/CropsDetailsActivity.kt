@@ -1,15 +1,12 @@
-package com.ddev.chasabad.view.activity
+package com.ddev.chasabad_adigitalfarmer.view.activity
 
-import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.ddev.chasabad_adigitalfarmer.R
 
-class MainActivity : AppCompatActivity() {
-
+class CropsDetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
+        setContentView(R.layout.activity_crops_details)
     }
-
 }

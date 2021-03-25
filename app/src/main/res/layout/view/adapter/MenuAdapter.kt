@@ -1,11 +1,11 @@
-package com.ddev.chasabad.view.adapter
+package layout.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.ddev.chasabad.R
+import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
 import com.ddev.chasabad_adigitalfarmer.view.adapter.MenuAdapter
 import kotlinx.android.synthetic.main.menu_row.view.*

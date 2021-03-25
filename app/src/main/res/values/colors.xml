@@ -18,4 +18,5 @@
     <color name="colorBackground">#FAFBFD</color>
     <color name="menuBack">#1EF6CE</color>
     <color name="circleColor">#23D695</color>
+    <color name="dateColor">#fe8b88</color>
 </resources>

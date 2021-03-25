@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Chasabad - A Digital Farmer</string>
     <string name="menu_one">Menu one</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="event_date">27</string>
+    <string name="event_month">March</string>
+    <string name="event_name">Agricultural Fair 2021</string>
+    <string name="event_time">02.00 AM</string>
+    <string name="event_location">Palpara, Rangpur</string>
 </resources>

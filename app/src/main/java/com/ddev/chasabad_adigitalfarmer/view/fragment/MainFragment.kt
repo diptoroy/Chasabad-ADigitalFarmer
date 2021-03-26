@@ -26,13 +26,17 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModelFactory
 import com.ddev.chasabad_adigitalfarmer.R
+import com.ddev.chasabad_adigitalfarmer.model.event.EventData
+import com.ddev.chasabad_adigitalfarmer.model.tips.TipsData
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
 import com.ddev.chasabad_adigitalfarmer.util.Constants
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_ID
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.REQUEST_PERMISSION_REQUEST_CODE
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.uvIndex
+import com.ddev.chasabad_adigitalfarmer.view.adapter.EventAdapter
 import com.ddev.chasabad_adigitalfarmer.view.adapter.MenuAdapter
+import com.ddev.chasabad_adigitalfarmer.view.adapter.TipsAdapter
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
@@ -42,6 +46,7 @@ import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class MainFragment : Fragment() {
 
@@ -49,6 +54,8 @@ class MainFragment : Fragment() {
     private lateinit var lat: String
     private lateinit var lon: String
     private val menuAdapter by lazy { MenuAdapter() }
+    private val eventAdapter by lazy { EventAdapter() }
+    private val tipsAdapter by lazy { TipsAdapter() }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -66,20 +73,9 @@ class MainFragment : Fragment() {
         val viewModelFactory = MainFragmentViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainFragmentViewModel::class.java)
 
-//        menu_recyclerView.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
-        menu_recyclerView.layoutManager =
-                StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
-        menu_recyclerView.setHasFixedSize(true)
-        val menuList = ArrayList<MenuData>()
-        menuList.add(MenuData(R.drawable.plant, "Menu 1"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 2"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 3"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 4"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 5"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 6"))
-        Log.d("menu", menuList.toString())
-        menuAdapter.setData(menuList)
-        menu_recyclerView.adapter = menuAdapter
+        setupMenuRecyclerView()
+        setupEventRecyclerView()
+        setupTipsRecyclerView()
 
         if (context?.let {
                     ContextCompat.checkSelfPermission(
@@ -98,6 +94,47 @@ class MainFragment : Fragment() {
 
         }
 
+    }
+
+    private fun setupTipsRecyclerView() {
+        tips_recyclerview.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
+        tips_recyclerview.setHasFixedSize(true)
+        val tipsList = ArrayList<TipsData>()
+        tipsList.add(TipsData("Agricultural Fair 2021","Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"))
+        tipsList.add(TipsData("Agricultural Fair 2021","Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"))
+        tipsList.add(TipsData("Agricultural Fair 2021","Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"))
+        tipsList.add(TipsData("Agricultural Fair 2021","Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"))
+        tipsAdapter.setData(tipsList)
+        tips_recyclerview.adapter = tipsAdapter
+    }
+
+    private fun setupEventRecyclerView() {
+        event_recyclerview.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        event_recyclerview.setHasFixedSize(true)
+        val eventList = ArrayList<EventData>()
+        eventList.add(EventData("Agricultural Fair 2021","21","March",R.drawable.developapp,"Agricultural Fair 2021","Dr.Jhon Doe","London,England"))
+        eventList.add(EventData("Agricultural Fair 2021","21","March",R.drawable.developapp,"Agricultural Fair 2021","Dr.Jhon Doe","London,England"))
+        eventList.add(EventData("Agricultural Fair 2021","21","March",R.drawable.developapp,"Agricultural Fair 2021","Dr.Jhon Doe","London,England"))
+        eventList.add(EventData("Agricultural Fair 2021","21","March",R.drawable.developapp,"Agricultural Fair 2021","Dr.Jhon Doe","London,England"))
+        eventList.add(EventData("Agricultural Fair 2021","21","March",R.drawable.developapp,"Agricultural Fair 2021","Dr.Jhon Doe","London,England"))
+        eventAdapter.setData(eventList)
+        event_recyclerview.adapter = eventAdapter
+    }
+
+    private fun setupMenuRecyclerView() {
+        menu_recyclerView.layoutManager =
+            StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+        menu_recyclerView.setHasFixedSize(true)
+        val menuList = ArrayList<MenuData>()
+        menuList.add(MenuData(R.drawable.plant, "Menu 1"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 2"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 3"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 4"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 5"))
+        menuList.add(MenuData(R.drawable.plant, "Menu 6"))
+        Log.d("menu", menuList.toString())
+        menuAdapter.setData(menuList)
+        menu_recyclerView.adapter = menuAdapter
     }
 
     override fun onRequestPermissionsResult(

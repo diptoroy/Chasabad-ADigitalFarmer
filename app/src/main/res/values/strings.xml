@@ -6,4 +6,6 @@
     <string name="event_name">Agricultural Fair 2021</string>
     <string name="event_time">02.00 AM</string>
     <string name="event_location">Palpara, Rangpur</string>
+    <string name="event">Event</string>
+    <string name="tips">Tips</string>
 </resources>

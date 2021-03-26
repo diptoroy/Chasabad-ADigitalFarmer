@@ -8,4 +8,10 @@
     <string name="event_location">Palpara, Rangpur</string>
     <string name="event">Event</string>
     <string name="tips">Tips</string>
+    <string name="productName">Products</string>
+    <string name="products_current_price">T/S</string>
+    <string name="products_current_buy_price">T/B</string>
+    <string name="products_previous_price">Y/S</string>
+    <string name="products_previous_Buy_price">Y/B</string>
+    <string name="date">26-03-2021</string>
 </resources>

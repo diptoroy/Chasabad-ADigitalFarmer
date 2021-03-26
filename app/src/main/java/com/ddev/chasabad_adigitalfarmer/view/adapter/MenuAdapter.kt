@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
 import com.ddev.chasabad_adigitalfarmer.view.activity.CropsDetailsActivity
+import com.ddev.chasabad_adigitalfarmer.view.activity.MarketPriceActivity
 import kotlinx.android.synthetic.main.menu_row.view.*
 
 
@@ -41,7 +42,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
                 holder.itemView.context.startActivity(intent)
             } else if(position == 3){
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropsDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, MarketPriceActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             }
         }

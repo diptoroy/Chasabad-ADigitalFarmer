@@ -17,6 +17,7 @@
         android:theme="@style/Theme.ChasabadADigitalFarmer"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".view.activity.MarketPriceActivity"></activity>
         <activity android:name=".view.activity.CropsDetailsActivity" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>

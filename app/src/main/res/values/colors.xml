@@ -20,4 +20,5 @@
     <color name="circleColor">#23D695</color>
     <color name="dateColor">#fe8b88</color>
     <color name="background">#f2f6ff</color>
+    <color name="background2">#f8f8f8</color>
 </resources>

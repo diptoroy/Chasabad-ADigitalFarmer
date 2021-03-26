@@ -91,7 +91,6 @@ class MainFragment : Fragment() {
             }
         } else {
             getCurrentLocation()
-
         }
 
     }
@@ -123,15 +122,17 @@ class MainFragment : Fragment() {
 
     private fun setupMenuRecyclerView() {
         menu_recyclerView.layoutManager =
-            StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL)
+            StaggeredGridLayoutManager(4, LinearLayoutManager.VERTICAL)
         menu_recyclerView.setHasFixedSize(true)
         val menuList = ArrayList<MenuData>()
-        menuList.add(MenuData(R.drawable.plant, "Menu 1"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 2"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 3"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 4"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 5"))
-        menuList.add(MenuData(R.drawable.plant, "Menu 6"))
+        menuList.add(MenuData(R.drawable.plant, "Crop"))
+        menuList.add(MenuData(R.drawable.plant, "Plant System"))
+        menuList.add(MenuData(R.drawable.plant, "Fertilizer"))
+        menuList.add(MenuData(R.drawable.plant, "Market Price"))
+        menuList.add(MenuData(R.drawable.plant, "Shop"))
+        menuList.add(MenuData(R.drawable.plant, "Article"))
+        menuList.add(MenuData(R.drawable.plant, "Blog"))
+        menuList.add(MenuData(R.drawable.plant, "Others"))
         Log.d("menu", menuList.toString())
         menuAdapter.setData(menuList)
         menu_recyclerView.adapter = menuAdapter
@@ -201,7 +202,6 @@ class MainFragment : Fragment() {
                         }
                     }
                 }, Looper.getMainLooper())
-
     }
 
     private fun getData() {
@@ -256,9 +256,6 @@ class MainFragment : Fragment() {
                                 notificationManager?.notify(NOTIFICATION_ID, notificationBuilder!!)
                             }
                         }
-
-
-
                     })
         }
     }
@@ -274,7 +271,4 @@ class MainFragment : Fragment() {
             manager.createNotificationChannel(channel)
         }
     }
-
-
-
 }

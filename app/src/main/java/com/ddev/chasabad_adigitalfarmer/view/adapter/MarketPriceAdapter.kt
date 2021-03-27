@@ -19,17 +19,14 @@ class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.productName.text = marketPriceList[position].productName.toString()
-        holder.itemView.current_sell_price.text = marketPriceList[position].productCurrentSellPrice.toString()
-        holder.itemView.current_buy_price.text = marketPriceList[position].productCurrentBuyPrice.toString()
-        holder.itemView.previous_sell_price.text = marketPriceList[position].productPreviousSellPrice.toString()
-        holder.itemView.previous_buy_price.text = marketPriceList[position].productPreviousBuyPrice.toString()
+        holder.itemView.productName.text = marketPriceList[position].productName
+        holder.itemView.current_sell_price.text = marketPriceList[position].productCurrentSellPrice
+        holder.itemView.current_buy_price.text = marketPriceList[position].productCurrentBuyPrice
+        holder.itemView.previous_sell_price.text = marketPriceList[position].productPreviousSellPrice
+        holder.itemView.previous_buy_price.text = marketPriceList[position].productPreviousBuyPrice
 
-//        if (marketPriceList[position].productCurrentSellPrice > marketPriceList[position].productPreviousSellPrice){
-//            holder.itemView.ts_signal.visibility = View.INVISIBLE
-//            Glide.with(holder.itemView.context).load(marketPriceList[position].pr)
-//                .into(holder.itemView.ts_signal).toString()
-//        }
+        setUpDown(holder, position)
+
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +37,36 @@ class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>()
         notifyDataSetChanged()
          marketPriceList= newList
         notifyDataSetChanged()
+    }
+
+    private fun setUpDown(holder: ViewHolder, position: Int){
+        when {
+            marketPriceList[position].productCurrentSellPrice > marketPriceList[position].productPreviousSellPrice -> {
+                holder.itemView.ts_signal.visibility = View.VISIBLE
+                holder.itemView.ts_signal.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
+            }
+            marketPriceList[position].productCurrentSellPrice < marketPriceList[position].productPreviousSellPrice -> {
+                holder.itemView.ts_signal.visibility = View.VISIBLE
+                holder.itemView.ts_signal.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
+            }
+            else -> {
+                holder.itemView.ts_signal.visibility = View.INVISIBLE
+            }
+        }
+
+        when {
+            marketPriceList[position].productCurrentBuyPrice > marketPriceList[position].productPreviousBuyPrice -> {
+                holder.itemView.tb_signal.visibility = View.VISIBLE
+                holder.itemView.tb_signal.setImageResource(R.drawable.ic_baseline_arrow_drop_up_24)
+            }
+            marketPriceList[position].productCurrentBuyPrice < marketPriceList[position].productPreviousBuyPrice -> {
+                holder.itemView.tb_signal.visibility = View.VISIBLE
+                holder.itemView.tb_signal.setImageResource(R.drawable.ic_baseline_arrow_drop_down_24)
+            }
+            else -> {
+                holder.itemView.tb_signal.visibility = View.INVISIBLE
+            }
+        }
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)

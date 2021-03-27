@@ -26,15 +26,13 @@ class MarketPriceActivity : AppCompatActivity() {
             LinearLayoutManager.VERTICAL,false)
         market_price_ecyclerView.setHasFixedSize(true)
         val market_price_list = ArrayList<MarketPriceData>()
+        market_price_list.add(MarketPriceData("Corn","22$","21$","23$","18$"))
+        market_price_list.add(MarketPriceData("Corn","22$","25$","20$","18$"))
+        market_price_list.add(MarketPriceData("Corn","22$","4$","5$","5$"))
+        market_price_list.add(MarketPriceData("Corn","22$","21$","33$","18$"))
         market_price_list.add(MarketPriceData("Corn","22$","21$","20$","18$"))
-        market_price_list.add(MarketPriceData("Rice","23.5$","23$","29$","30$"))
-        market_price_list.add(MarketPriceData("Corn","22$","21$","20$","18$"))
-        market_price_list.add(MarketPriceData("Rice","23.5$","23$","29$","30$"))
-        market_price_list.add(MarketPriceData("Corn","22$","21$","20$","18$"))
-        market_price_list.add(MarketPriceData("Rice","23.5$","23$","29$","30$"))
-        market_price_list.add(MarketPriceData("Corn","22$","21$","20$","18$"))
-        market_price_list.add(MarketPriceData("Rice","23.5$","23$","29$","30$"))
-
+        market_price_list.add(MarketPriceData("Corn","22$","40$","20$","32$"))
+        market_price_list.add(MarketPriceData("Corn","22$","21$","22$","18$"))
         marketPriceAdapter.setData(market_price_list)
         market_price_ecyclerView.adapter = marketPriceAdapter
     }

@@ -2,6 +2,7 @@ package com.ddev.chasabad_adigitalfarmer.util
 
 class Constants {
     companion object{
+        //Location
         const val BASE_URL = "http://api.openweathermap.org/"
         const val APP_ID = "1af5922fab1bb3d30821d6bb74d6bf4e"
         const val LAT = "25.743893"
@@ -14,6 +15,10 @@ class Constants {
         val NOTIFICATION_ID = 0
 
         val uvIndex: Double = 7.99
+
+        //Article
+        const val NEWS_BASE_URL = "https://newsapi.org/"
+        const val NEWS_APP_ID = "44c8bbad59834d47ba7dd84f759e9086"
     }
 }
 

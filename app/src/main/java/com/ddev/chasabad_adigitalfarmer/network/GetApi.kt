@@ -1,5 +1,6 @@
 package com.ddev.chasabad_adigitalfarmer.network
 
+import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
 import com.ddev.chasabad_adigitalfarmer.model.weatherDailyModel.WeatherUviData
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.WeatherData
 import retrofit2.Response
@@ -20,4 +21,9 @@ interface GetApi {
         @Query("lon") lon: String,
         @Query("appid") appid: String
     ): Response<WeatherUviData>
+
+    @GET("v2/top-headlines?country=us")
+    suspend fun getNews(
+        @Query("apiKey") apikey: String
+    ):Response<NewsData>
 }

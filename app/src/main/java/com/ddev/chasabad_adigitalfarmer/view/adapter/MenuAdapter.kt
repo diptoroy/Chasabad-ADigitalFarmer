@@ -12,6 +12,7 @@ import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
 import com.ddev.chasabad_adigitalfarmer.view.activity.ArticleActivity
 import com.ddev.chasabad_adigitalfarmer.view.activity.CropsDetailsActivity
 import com.ddev.chasabad_adigitalfarmer.view.activity.MarketPriceActivity
+import com.ddev.chasabad_adigitalfarmer.view.activity.ShopActivity
 import kotlinx.android.synthetic.main.menu_row.view.*
 
 
@@ -47,7 +48,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
                 holder.itemView.context.startActivity(intent)
             }else if(position == 4){
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, MarketPriceActivity::class.java)
+                val intent = Intent(holder.itemView.context, ShopActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             }else if(position == 5){
                 Log.d("clicked!", position.toString())

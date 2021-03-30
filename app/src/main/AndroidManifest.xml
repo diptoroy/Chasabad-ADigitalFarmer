@@ -17,7 +17,8 @@
         android:theme="@style/Theme.ChasabadADigitalFarmer"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".view.activity.ArticleActivity"></activity>
+        <activity android:name=".view.activity.ShopActivity"></activity>
+        <activity android:name=".view.activity.ArticleActivity" />
         <activity android:name=".view.activity.MarketPriceActivity" />
         <activity android:name=".view.activity.CropsDetailsActivity" />
         <activity android:name=".view.activity.MainActivity">

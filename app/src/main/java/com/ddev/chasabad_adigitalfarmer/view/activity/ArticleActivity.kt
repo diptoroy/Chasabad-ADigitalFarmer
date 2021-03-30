@@ -36,13 +36,10 @@ class ArticleActivity : AppCompatActivity(),OnItemClickListener {
                 Log.d("article", response.body().toString())
                 news_day.text = response.body()?.articles?.get(1)?.title
                 Glide.with(this).load(response.body()?.articles?.get(1)?.urlToImage).into(news_day_image)
-                //articleAdapter.setData(response)
+                //articleAdapter.setData(response.body()?)
             }else{
                 Log.d("Response", response.errorBody().toString())
             }
-
-            //        articleAdapter.setData(response)
-//            Log.d("article",articleList.toString())
         })
 
         setUpNews()

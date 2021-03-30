@@ -1,12 +1,22 @@
 package com.ddev.chasabad_adigitalfarmer.model.news
 
+import com.google.gson.annotations.SerializedName
+
 data class Article(
-    val author: Any,
+    @SerializedName("author")
+    val author: String,
+    @SerializedName("content")
     val content: String,
-    val description: Any,
+    @SerializedName("description")
+    val description: String,
+    @SerializedName("publishedAt")
     val publishedAt: String,
+    @SerializedName("source")
     val source: Source,
+    @SerializedName("title")
     val title: String,
+    @SerializedName("url")
     val url: String,
-    val urlToImage: Any
+    @SerializedName("urlToImage")
+    val urlToImage: String
 )

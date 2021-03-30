@@ -15,7 +15,7 @@ class Repository {
         return ApiClient.api.getDailyWeatherData(lat,lon,appid)
     }
 
-    suspend fun getNews(apiKey: String): Response<NewsData> {
+    suspend fun getNews(apiKey: String):Response<NewsData> {
         return ApiClient.newsApi.getNews(apiKey)
     }
 }

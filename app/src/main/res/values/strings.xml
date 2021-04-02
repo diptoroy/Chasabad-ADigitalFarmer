@@ -25,6 +25,19 @@
     <string name="productPrice">$19999</string>
     <string name="productCutPrice">$12999</string>
     <string name="productStar">5</string>
+    <string name="GetProduct">Get your Product</string>
+    <string name="ShopDetails">Shop Details</string>
+    <string name="ShopAuthor">Ratan Tata</string>
+    <string name="ShopLocation">Mumbai,India</string>
+    <string name="ShopName">Tata Motors</string>
+    <string name="ShopPhone">+892345676</string>
+    <string name="ShopSite">www.tatamotors.com</string>
+
+    <string name="ShopAuthorText">Author :</string>
+    <string name="ShopLocationText">Location :</string>
+    <string name="ShopNameText">Shop Name :</string>
+    <string name="ShopPhoneText">Phone :</string>
+    <string name="ShopSiteText">Website :</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

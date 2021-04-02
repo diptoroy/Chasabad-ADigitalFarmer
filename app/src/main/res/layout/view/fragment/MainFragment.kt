@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModelFactory
-import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
+import com.ddev.chasabad_adigitalfarmer.model.MenuData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
 import com.ddev.chasabad_adigitalfarmer.util.Constants
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.LAT

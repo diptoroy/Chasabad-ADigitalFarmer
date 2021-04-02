@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
-import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
+import com.ddev.chasabad_adigitalfarmer.model.MenuData
 import com.ddev.chasabad_adigitalfarmer.view.activity.ArticleActivity
-import com.ddev.chasabad_adigitalfarmer.view.activity.CropsDetailsActivity
+import com.ddev.chasabad_adigitalfarmer.view.activity.CropActivity
 import com.ddev.chasabad_adigitalfarmer.view.activity.MarketPriceActivity
 import com.ddev.chasabad_adigitalfarmer.view.activity.ShopActivity
 import kotlinx.android.synthetic.main.menu_row.view.*
@@ -32,15 +32,15 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
         holder.itemView.setOnClickListener {
             if (position == 0) {
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropsDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, CropActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else if (position == 1) {
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropsDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, CropActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else if (position == 2) {
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropsDetailsActivity::class.java)
+                val intent = Intent(holder.itemView.context, CropActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else if(position == 3){
                 Log.d("clicked!", position.toString())

@@ -28,7 +28,7 @@ import com.ddev.chasabad_adigitalfarmer.view.viewmodel.MainFragmentViewModelFact
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.event.EventData
 import com.ddev.chasabad_adigitalfarmer.model.tips.TipsData
-import com.ddev.chasabad_adigitalfarmer.model.weatherModel.MenuData
+import com.ddev.chasabad_adigitalfarmer.model.MenuData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
 import com.ddev.chasabad_adigitalfarmer.util.Constants
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_ID

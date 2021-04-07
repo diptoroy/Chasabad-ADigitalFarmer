@@ -32,12 +32,28 @@
     <string name="ShopName">Tata Motors</string>
     <string name="ShopPhone">+892345676</string>
     <string name="ShopSite">www.tatamotors.com</string>
-
     <string name="ShopAuthorText">Author :</string>
     <string name="ShopLocationText">Location :</string>
     <string name="ShopNameText">Shop Name :</string>
     <string name="ShopPhoneText">Phone :</string>
     <string name="ShopSiteText">Website :</string>
+
+    <string name="CropName">Rice</string>
+    <string name="CropTime">March - July</string>
+    <string name="CropTimeText">Time</string>
+    <string name="CropIntroText">Crop Introduction</string>
+    <string name="CropProcessText">Crop Process</string>
+    <string name="CropIntro">Rice is the seed of the grass species Oryza sativa (Asian rice) or less commonly Oryza glaberrima (African rice). The name wild rice is usually used for species of the genera Zizania and Porteresia, both wild and domesticated, although the term may also be used for primitive or uncultivated varieties of Oryza.</string>
+    <string name="CropProcess">The cultivation of rice begins by planting water-soaked seeds in a properly prepared bed. Oftentimes, the seedlings are transplanted to the paddy when they reach a certain size. When the grains begin to ripen, the water is drained from the fields. Harvesting begins when the grain yellow and the plants start to droop.</string>
+    <string name="CropDisease">Bacterial blight,Bacterial leaf streak,Blast (leaf and collar),Brown spot,False smut,Rice grassy stunt,Rice ragged stunt,Sheath blight.</string>
+    <string name="CropFertilizerName">Uria</string>
+    <string name="CropFertilizerNameText">Fertilizer</string>
+    <string name="CropFertilizerAmount">2 kg</string>
+    <string name="CropFertilizerFirst">First</string>
+    <string name="CropFertilizerSecond">Second</string>
+    <string name="CropFertilizerThird">Third</string>
+    <string name="CropCaste">Amon</string>
+    <string name="CropCasteText">Type</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

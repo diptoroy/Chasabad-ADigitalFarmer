@@ -1,15 +1,12 @@
 package com.ddev.chasabad_adigitalfarmer.view.adapter
 
-import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.marketPrice.MarketPriceData
 import kotlinx.android.synthetic.main.market_price_row.view.*
-import kotlinx.android.synthetic.main.menu_row.view.*
 
 class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>() {
     private var marketPriceList = emptyList<MarketPriceData>()
@@ -19,10 +16,10 @@ class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.itemView.productName.text = marketPriceList[position].productName
+        holder.itemView.fertilizerName.text = marketPriceList[position].productName
         holder.itemView.current_sell_price.text = marketPriceList[position].productCurrentSellPrice
         holder.itemView.current_buy_price.text = marketPriceList[position].productCurrentBuyPrice
-        holder.itemView.previous_sell_price.text = marketPriceList[position].productPreviousSellPrice
+        holder.itemView.fertilizer_second.text = marketPriceList[position].productPreviousSellPrice
         holder.itemView.previous_buy_price.text = marketPriceList[position].productPreviousBuyPrice
 
         setUpDown(holder, position)

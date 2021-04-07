@@ -19,6 +19,8 @@ class Constants {
         //Article
         const val NEWS_BASE_URL = "https://newsapi.org/"
         const val NEWS_APP_ID = "44c8bbad59834d47ba7dd84f759e9086"
+
+        const val FAKE_URL = "https://gist.githubusercontent.com/"
     }
 }
 

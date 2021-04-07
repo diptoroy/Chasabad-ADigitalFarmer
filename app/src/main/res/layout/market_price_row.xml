@@ -11,7 +11,7 @@
         android:weightSum="5">
 
         <TextView
-            android:id="@+id/productName"
+            android:id="@+id/fertilizerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,7 +76,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/previous_sell_price"
+            android:id="@+id/fertilizer_second"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

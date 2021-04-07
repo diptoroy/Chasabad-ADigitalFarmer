@@ -64,7 +64,7 @@ class ShopActivity : AppCompatActivity(),ShopOnItemClickListener {
         objects.show(supportFragmentManager,"objects")
         val newBundle = Bundle()
         newBundle.putString("name", item.productName)
-        newBundle.putString("image", item.productImage.toString())
+        newBundle.putInt("image", item.productImage)
         newBundle.putString("price", item.productPrice)
         newBundle.putString("details", item.productDetails)
         newBundle.putString("store", item.productStore)

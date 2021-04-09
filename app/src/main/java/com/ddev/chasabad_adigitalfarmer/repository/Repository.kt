@@ -1,6 +1,8 @@
 package com.ddev.chasabad_adigitalfarmer.repository
 
 import com.ddev.chasabad_adigitalfarmer.model.allCrop.AllCropData
+import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
+import com.ddev.chasabad_adigitalfarmer.model.crop.CropFertilizer
 import com.ddev.chasabad_adigitalfarmer.model.news.Article
 import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
 import com.ddev.chasabad_adigitalfarmer.model.weatherDailyModel.WeatherUviData
@@ -28,5 +30,10 @@ class Repository {
     suspend fun getAllCrop():Response<AllCropData> {
         return ApiClient.newsApi.getAllCrop()
     }
+
+    suspend fun getCropData():List<CropData> {
+        return ApiClient.newsApi.getCropData()
+    }
+
 
 }

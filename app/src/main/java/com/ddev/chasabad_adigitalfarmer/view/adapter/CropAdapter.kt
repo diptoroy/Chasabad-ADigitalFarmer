@@ -21,8 +21,7 @@ class CropAdapter(private val cropOnItemClickListener: CropOnItemClickListener) 
         com.bumptech.glide.Glide.with(holder.itemView.context).load(cropList[position].cropImage).into(holder.itemView.crop_image)
         holder.itemView.crop_details.text = cropList[position].cropDetails
         holder.itemView.crop_time.text = cropList[position].cropTime
-//        com.bumptech.glide.Glide.with(holder.itemView.context).load(cropList[position].actorDetails?.get(position)?.actorImage).into(holder.itemView.actorImage)
-//
+
         holder.itemView.setOnClickListener{
             cropOnItemClickListener.onClick(cropList[position],position)
         }

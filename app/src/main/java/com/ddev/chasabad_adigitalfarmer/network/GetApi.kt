@@ -1,6 +1,8 @@
 package com.ddev.chasabad_adigitalfarmer.network
 
 import com.ddev.chasabad_adigitalfarmer.model.allCrop.AllCropData
+import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
+import com.ddev.chasabad_adigitalfarmer.model.crop.CropFertilizer
 import com.ddev.chasabad_adigitalfarmer.model.news.Article
 import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
 import com.ddev.chasabad_adigitalfarmer.model.weatherDailyModel.WeatherUviData
@@ -34,4 +36,8 @@ interface GetApi {
 
     @GET("diptoroy/b0ba906381012532fc0926f764ee535e/raw/8e9a3e250909cdb87ad4ba1a7f1bf60dfd76a725/crop")
     suspend fun getAllCrop():Response<AllCropData>
+
+    @GET("diptoroy/b0ba906381012532fc0926f764ee535e/raw/4bbf18e78a57f807e5a162476b68b8a5913d2b94/crop")
+    suspend fun getCropData():List<CropData>
+
 }

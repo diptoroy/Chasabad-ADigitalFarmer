@@ -9,12 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
-import com.ddev.chasabad_adigitalfarmer.model.crop.CropFertilizer
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
-import com.ddev.chasabad_adigitalfarmer.util.CropOnItemClickListener
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.CropOnItemClickListener
 import com.ddev.chasabad_adigitalfarmer.view.adapter.CropAdapter
-import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModel
-import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModelFactory
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.CropActivityViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.CropActivityViewModelFactory
 import kotlinx.android.synthetic.main.activity_crop.*
@@ -56,7 +53,7 @@ class CropActivity : AppCompatActivity(), CropOnItemClickListener {
 //        fertilizerList.add(CropFertilizer("Potash", "22", "12", "9"))
 //        fertilizerList.add(CropFertilizer("Calcium", "22", "12", "9"))
 //
-//        val cropList = ArrayList<CropData>()
+
 //        cropList.add(
 //            CropData(
 //                R.drawable.rice.toString(), "ফসলের নামঃ ধান", "মার্চ - জুলাই",

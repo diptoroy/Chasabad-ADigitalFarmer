@@ -126,7 +126,7 @@ class MainFragment : Fragment() {
         menu_recyclerView.setHasFixedSize(true)
         val menuList = ArrayList<MenuData>()
         menuList.add(MenuData(R.drawable.plant, "Crop"))
-        menuList.add(MenuData(R.drawable.plant, "Plant System"))
+        menuList.add(MenuData(R.drawable.plant, "Nursery"))
         menuList.add(MenuData(R.drawable.plant, "Disease"))
         menuList.add(MenuData(R.drawable.plant, "Market Price"))
         menuList.add(MenuData(R.drawable.plant, "Shop"))

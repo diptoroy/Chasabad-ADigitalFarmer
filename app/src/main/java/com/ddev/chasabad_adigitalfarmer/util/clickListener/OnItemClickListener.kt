@@ -1,4 +1,4 @@
-package com.ddev.chasabad_adigitalfarmer.util
+package com.ddev.chasabad_adigitalfarmer.util.clickListener
 
 import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
 

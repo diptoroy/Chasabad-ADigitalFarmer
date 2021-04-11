@@ -7,12 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.news.Article
-import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
-import com.ddev.chasabad_adigitalfarmer.util.ArticleOnItemClickListener
-import com.ddev.chasabad_adigitalfarmer.util.OnItemClickListener
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.ArticleOnItemClickListener
 import kotlinx.android.synthetic.main.article_row.view.*
-import retrofit2.Response
-import java.text.SimpleDateFormat
 
 class ArticleAdapter (private val onItemClickListener: ArticleOnItemClickListener): RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
     private var articleList = emptyList<Article>()

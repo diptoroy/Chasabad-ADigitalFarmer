@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.shop.ShopData
-import com.ddev.chasabad_adigitalfarmer.util.ShopOnItemClickListener
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.ShopOnItemClickListener
 import com.ddev.chasabad_adigitalfarmer.view.adapter.ShopAdapter
 import com.ddev.chasabad_adigitalfarmer.view.fragment.ShopDetailsFragment
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
 import kotlinx.android.synthetic.main.activity_shop.*
 
-class ShopActivity : AppCompatActivity(),ShopOnItemClickListener {
+class ShopActivity : AppCompatActivity(), ShopOnItemClickListener {
 
     private val sliderList = ArrayList<SlideModel>()
     private val shopAdapter by lazy { ShopAdapter(this) }

@@ -11,16 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.news.Article
-import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
-import com.ddev.chasabad_adigitalfarmer.util.ArticleOnItemClickListener
-import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NEWS_APP_ID
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.ArticleOnItemClickListener
 import com.ddev.chasabad_adigitalfarmer.view.adapter.ArticleAdapter
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModelFactory
 import kotlinx.android.synthetic.main.activity_news.*
 
-class ArticleActivity : AppCompatActivity(),ArticleOnItemClickListener {
+class ArticleActivity : AppCompatActivity(), ArticleOnItemClickListener {
 
     private lateinit var viewModel: ArticleActivityViewModel
     private val articleAdapter by lazy { ArticleAdapter(this) }

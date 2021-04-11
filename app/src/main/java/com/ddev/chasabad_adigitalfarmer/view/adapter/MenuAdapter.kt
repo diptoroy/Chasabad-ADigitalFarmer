@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.MenuData
-import com.ddev.chasabad_adigitalfarmer.view.activity.ArticleActivity
-import com.ddev.chasabad_adigitalfarmer.view.activity.CropActivity
-import com.ddev.chasabad_adigitalfarmer.view.activity.MarketPriceActivity
-import com.ddev.chasabad_adigitalfarmer.view.activity.ShopActivity
+import com.ddev.chasabad_adigitalfarmer.view.activity.*
 import kotlinx.android.synthetic.main.menu_row.view.*
 
 
@@ -36,11 +33,11 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
                 holder.itemView.context.startActivity(intent)
             } else if (position == 1) {
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropActivity::class.java)
+                val intent = Intent(holder.itemView.context, NurseryActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else if (position == 2) {
                 Log.d("clicked!", position.toString())
-                val intent = Intent(holder.itemView.context, CropActivity::class.java)
+                val intent = Intent(holder.itemView.context, DiseaseActivity::class.java)
                 holder.itemView.context.startActivity(intent)
             } else if(position == 3){
                 Log.d("clicked!", position.toString())

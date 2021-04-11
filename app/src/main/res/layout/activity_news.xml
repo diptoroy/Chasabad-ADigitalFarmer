@@ -87,7 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/news_day_image2">
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/nursery_deyails_origin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -105,8 +105,8 @@
             android:layout_height="3dp"
             android:layout_marginTop="4dp"
             android:background="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintStart_toStartOf="@+id/nursery_deyails_origin"
+            app:layout_constraintTop_toBottomOf="@+id/nursery_deyails_origin" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/article_recyclerview"

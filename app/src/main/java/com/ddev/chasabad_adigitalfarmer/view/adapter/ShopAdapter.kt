@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.shop.ShopData
-import com.ddev.chasabad_adigitalfarmer.util.ShopOnItemClickListener
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.ShopOnItemClickListener
 import kotlinx.android.synthetic.main.shop_row.view.*
 
 class ShopAdapter(private val shopOnItemClickListener: ShopOnItemClickListener) : RecyclerView.Adapter<ShopAdapter.ViewHolder>() {

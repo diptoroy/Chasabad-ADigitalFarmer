@@ -43,7 +43,7 @@
     <string name="CropTimeText">Time</string>
     <string name="CropIntroText">Crop Introduction</string>
     <string name="CropProcessText">Crop Process</string>
-    <string name="CropIntro">Rice is the seed of the grass species Oryza sativa (Asian rice) or less commonly Oryza glaberrima (African rice). The name wild rice is usually used for species of the genera Zizania and Porteresia, both wild and domesticated, although the term may also be used for primitive or uncultivated varieties of Oryza.</string>
+    <string name="CropIntro"> Oryza glaberrima (African rice). The name wild rice is usually used for species of the genera Zizania and Porteresia, both wild and domesticated, although the term may also be used for primitive or uncultivated varieties of Oryza.</string>
     <string name="CropProcess">The cultivation of rice begins by planting water-soaked seeds in a properly prepared bed. Oftentimes, the seedlings are transplanted to the paddy when they reach a certain size. When the grains begin to ripen, the water is drained from the fields. Harvesting begins when the grain yellow and the plants start to droop.</string>
     <string name="CropDisease">Bacterial blight,Bacterial leaf streak,Blast (leaf and collar),Brown spot,False smut,Rice grassy stunt,Rice ragged stunt,Sheath blight.</string>
     <string name="CropFertilizerName">Uria</string>
@@ -54,6 +54,39 @@
     <string name="CropFertilizerThird">Third</string>
     <string name="CropCaste">Amon</string>
     <string name="CropCasteText">Type</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="cropDiseaseA">Bacterial leaf streak</string>
+    <string name="cropDiseaseDetailsText">Disease Details</string>
+    <string name="cropDiseaseAD">The cultivation of rice begins by planting water-soaked seeds in a properly prepared</string>
+    <string name="cropDiesaseGroupName">Xanthomonas oryzae</string>
+    <string name="cropDiseaseMedicine">Antibiotics, Agrimycin 100, Agrimycin 500, Agric</string>
+    <string name="cropDiseaseMedicineRule">The cultivation of rice begins by planting water-soaked seeds in a properly prepared</string>
+    <string name="cropDiseaseCropName">Rice,Jute</string>
+    <string name="cropDiesaseMedicineGroupName">Oryzae</string>
+    <string name="cropDiseaseMedicineText">Medicine</string>
+    <string name="cropDiseaseCropText">Affected Crops</string>
+    <string name="cropDiseaseMedicineRuleText">Medicine Rule</string>
+    <string name="cropDiseaseMedicineGroupName">(Agrimycin)</string>
+
+    <string name="nurseryNameText">Corsica</string>
+    <string name="nurseryDetailsText">Detail</string>
+    <string name="nurseryProcessText">Process</string>
+    <string name="nurseryUsagesText">Use</string>
+    <string name="nurseryDetails">The cultivation of rice begins by planting water-soaked seeds in a properly prepared</string>
+
+    <string name="nurseryFamilyText">Family</string>
+    <string name="nurseryFamily">Agavoideae</string>
+    <string name="nurseryOriginText">Origin</string>
+    <string name="nurseryOrigin">American And Caribian</string>
+    <string name="nurseryHeightText">Height</string>
+    <string name="nurseryHeight">24 inch to 30 inch</string>
+    <string name="nurseryCategoryText">Category</string>
+    <string name="nurseryCategory">Indoor</string>
+
+    <string name="nurseryCultivationText">Cultivation</string>
+    <string name="nurseryCultivation">Transplanted</string>
+    <string name="nurseryHarvestingText">Harvesting</string>
+    <string name="nurseryHarvesting">90-100 days</string>
+    <string name="nurseryTempText">Temperature</string>
+    <string name="nurseryTemp">21 to 27 cel</string>
 </resources>

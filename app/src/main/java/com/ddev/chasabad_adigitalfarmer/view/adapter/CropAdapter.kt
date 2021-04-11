@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
-import com.ddev.chasabad_adigitalfarmer.util.CropOnItemClickListener
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.CropOnItemClickListener
 import kotlinx.android.synthetic.main.crop_row.view.*
 
 class CropAdapter(private val cropOnItemClickListener: CropOnItemClickListener) : RecyclerView.Adapter<CropAdapter.ViewHolder>() {

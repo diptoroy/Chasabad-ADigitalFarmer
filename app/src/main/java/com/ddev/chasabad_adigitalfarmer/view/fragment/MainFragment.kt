@@ -131,8 +131,8 @@ class MainFragment : Fragment() {
         menuList.add(MenuData(R.drawable.plant, "Market Price"))
         menuList.add(MenuData(R.drawable.plant, "Shop"))
         menuList.add(MenuData(R.drawable.plant, "Article"))
+        menuList.add(MenuData(R.drawable.plant, "Farming"))
         menuList.add(MenuData(R.drawable.plant, "Question Bank"))
-        menuList.add(MenuData(R.drawable.plant, "Others"))
         Log.d("menu", menuList.toString())
         menuAdapter.setData(menuList)
         menu_recyclerView.adapter = menuAdapter

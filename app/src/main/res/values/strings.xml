@@ -89,4 +89,16 @@
     <string name="nurseryHarvesting">90-100 days</string>
     <string name="nurseryTempText">Temperature</string>
     <string name="nurseryTemp">21 to 27 cel</string>
+
+    <string name="farmingName">Cow</string>
+    <string name="farmingTypeText">Type</string>
+    <string name="farmingType">Domestic</string>
+    <string name="farmingBreedText">Breed</string>
+    <string name="farmingBreed">Belgium</string>
+    <string name="farmingBehaveText">Behave</string>
+    <string name="farmingBehave">Friendly</string>
+    <string name="farmingDiseaseText">Disease</string>
+    <string name="farmingVaccinationText">Vaccination</string>
+
+
 </resources>

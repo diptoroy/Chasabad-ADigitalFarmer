@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layout_bg"
-    tools:context=".view.activity.NurseryActivity">
+    tools:context=".view.activity.FarmingActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/nursery_recyclerview"
-        android:layout_width="0dp"
+        android:id="@+id/farming_recyclerview"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -3,6 +3,8 @@
 
     <corners android:radius="12dp">
     </corners>
+    <solid android:color="@color/blue"/>
+    <stroke android:dashWidth="9dp"/>
 <!--    <padding android:top="2dp"-->
 <!--        android:bottom="2dp"-->
 <!--        android:left="2dp"-->

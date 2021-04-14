@@ -78,7 +78,7 @@ class NurseryActivity : AppCompatActivity(), NurseryOnItemClickListener {
     override fun onClick(item: NurseryData, position: Int) {
         val intent = Intent(this, NurseryDetailsActivity::class.java)
         intent.putExtra("name", item.nurseryName)
-        intent.putExtra("imageq", item.nurseryImage)
+        intent.putExtra("image", item.nurseryImage)
         intent.putExtra("family", item.nurseryFamilyName)
         intent.putExtra("origin", item.nurseryOrigin)
         intent.putExtra("height", item.nurseryHeight)

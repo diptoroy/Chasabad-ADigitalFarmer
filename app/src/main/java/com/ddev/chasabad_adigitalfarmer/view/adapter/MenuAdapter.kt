@@ -32,34 +32,49 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
                 0 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, CropActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }1 -> {
+                }
+                1 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, NurseryActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }2 -> {
+                }
+                2 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, DiseaseActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }3 -> {
+                }
+                3 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, MarketPriceActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }4 -> {
+                }
+                4 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, ShopActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }5 -> {
+                }
+                5 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, ArticleActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }6 -> {
+                }
+                6 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, FarmingActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
-                }7 -> {
+                }
+                7 -> {
                     Log.d("clicked!", position.toString())
                     val intent = Intent(holder.itemView.context, ArticleActivity::class.java)
+                    intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
                 }
             }

@@ -2,8 +2,13 @@ package com.ddev.chasabad_adigitalfarmer.view.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +20,7 @@ import com.ddev.chasabad_adigitalfarmer.view.adapter.CropAdapter
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.CropActivityViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.CropActivityViewModelFactory
 import kotlinx.android.synthetic.main.activity_crop.*
+import java.util.Locale.filter
 
 
 class CropActivity : AppCompatActivity(), CropOnItemClickListener {
@@ -25,6 +31,15 @@ class CropActivity : AppCompatActivity(), CropOnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crop)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            val bundle:Bundle? = intent.extras
+            toolbar.title = bundle!!.getString("name")
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
+
 
         val repository = Repository()
         val viewModelFactory = CropActivityViewModelFactory(repository)
@@ -39,6 +54,7 @@ class CropActivity : AppCompatActivity(), CropOnItemClickListener {
 
         setUpCrops()
     }
+
 
     private fun setUpCrops() {
         crop_recyclerview.layoutManager = LinearLayoutManager(
@@ -104,5 +120,31 @@ class CropActivity : AppCompatActivity(), CropOnItemClickListener {
         intent.putExtra("fertilizerThird", item.cropFertilizer[position].fertilizerThird)
         startActivity(intent)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        val menuItem = menu!!.findItem(R.id.search_item)
+        val searchView = menuItem.actionView as SearchView
+        searchView.maxWidth = Int.MAX_VALUE
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                cropAdapter.filter.filter(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                cropAdapter.filter.filter(newText)
+                Log.d("search", "===>$newText")
+                return true
+            }
+
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
 }
+
 

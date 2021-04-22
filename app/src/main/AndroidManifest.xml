@@ -17,18 +17,35 @@
         android:theme="@style/Theme.ChasabadADigitalFarmer"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".view.activity.FarmingDetailsActivity"></activity>
-        <activity android:name=".view.activity.FarmingActivity" />
+        <activity android:name=".view.activity.RegisterActivity">
+
+        </activity>
+        <activity android:name=".view.activity.FarmingDetailsActivity" />
+        <activity
+            android:name=".view.activity.FarmingActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
         <activity android:name=".view.activity.NurseryDetailsActivity" />
-        <activity android:name=".view.activity.NurseryActivity" />
-        <activity android:name=".view.activity.DiseaseActivity" />
+        <activity
+            android:name=".view.activity.NurseryActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.DiseaseActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
         <activity android:name=".view.activity.ArticleDetailsActivity" />
         <activity android:name=".view.activity.CropDetailsActivity" />
-        <activity android:name=".view.activity.CropActivity" />
-        <activity android:name=".view.activity.ShopActivity" />
-        <activity android:name=".view.activity.ArticleActivity" />
-        <activity android:name=".view.activity.MarketPriceActivity" />
-        <activity android:name=".view.activity.CropsDetailsActivity" />
+        <activity
+            android:name=".view.activity.CropActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.ShopActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.ArticleActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity
+            android:name=".view.activity.MarketPriceActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.CropDetailsActivity" />
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

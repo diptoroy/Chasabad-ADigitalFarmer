@@ -3,6 +3,10 @@ package com.ddev.chasabad_adigitalfarmer.view.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
@@ -20,6 +24,14 @@ class NurseryActivity : AppCompatActivity(), NurseryOnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nursery)
+
+        setSupportActionBar(toolbar1)
+        supportActionBar?.apply {
+            val bundle:Bundle? = intent.extras
+            toolbar1.title = bundle!!.getString("name")
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         setUpNursery()
     }
@@ -90,5 +102,30 @@ class NurseryActivity : AppCompatActivity(), NurseryOnItemClickListener {
         intent.putExtra("process", item.nurseryProcess)
         intent.putExtra("use", item.nurseryUse)
         startActivity(intent)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        val menuItem = menu!!.findItem(R.id.search_item)
+        val searchView = menuItem.actionView as SearchView
+        searchView.maxWidth = Int.MAX_VALUE
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                nurseryAdapter.filter.filter(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                nurseryAdapter.filter.filter(newText)
+                Log.d("search", "===>$newText")
+                return true
+            }
+
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
     }
 }

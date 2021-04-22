@@ -1,7 +1,11 @@
 package com.ddev.chasabad_adigitalfarmer.view.activity
 
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
@@ -11,6 +15,7 @@ import com.ddev.chasabad_adigitalfarmer.view.adapter.ShopAdapter
 import com.ddev.chasabad_adigitalfarmer.view.fragment.ShopDetailsFragment
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.models.SlideModel
+import kotlinx.android.synthetic.main.activity_crop.*
 import kotlinx.android.synthetic.main.activity_shop.*
 
 class ShopActivity : AppCompatActivity(), ShopOnItemClickListener {
@@ -28,6 +33,14 @@ class ShopActivity : AppCompatActivity(), ShopOnItemClickListener {
 
         val imageSlider = findViewById<ImageSlider>(R.id.image_slider)
         imageSlider.setImageList(sliderList)
+
+        setSupportActionBar(toolbar3)
+        supportActionBar?.apply {
+            val bundle:Bundle? = intent.extras
+            toolbar3.title = bundle!!.getString("name")
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
         setupShopRecyclerView()
     }
@@ -74,6 +87,29 @@ class ShopActivity : AppCompatActivity(), ShopOnItemClickListener {
         newBundle.putString("site", item.productSite)
         objects.arguments = newBundle
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
+        val menuItem = menu!!.findItem(R.id.search_item)
+        val searchView = menuItem.actionView as SearchView
+        searchView.maxWidth = Int.MAX_VALUE
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                shopAdapter.filter.filter(query)
+                return true
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                shopAdapter.filter.filter(newText)
+                Log.d("search", "===>$newText")
+                return true
+            }
+
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
 }
 

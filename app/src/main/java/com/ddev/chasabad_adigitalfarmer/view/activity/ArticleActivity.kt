@@ -16,6 +16,7 @@ import com.ddev.chasabad_adigitalfarmer.util.clickListener.ArticleOnItemClickLis
 import com.ddev.chasabad_adigitalfarmer.view.adapter.ArticleAdapter
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModel
 import com.ddev.chasabad_adigitalfarmer.view.viewmodel.ArticleActivityViewModelFactory
+import kotlinx.android.synthetic.main.activity_crop.*
 import kotlinx.android.synthetic.main.activity_news.*
 
 class ArticleActivity : AppCompatActivity(), ArticleOnItemClickListener {
@@ -30,6 +31,14 @@ class ArticleActivity : AppCompatActivity(), ArticleOnItemClickListener {
         val repository = Repository()
         val viewModelFactory = ArticleActivityViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(ArticleActivityViewModel::class.java)
+
+        setSupportActionBar(toolbar6)
+        supportActionBar?.apply {
+            val bundle:Bundle? = intent.extras
+            toolbar6.title = bundle!!.getString("name")
+            setDisplayHomeAsUpEnabled(true)
+            setDisplayShowHomeEnabled(true)
+        }
 
 //        viewModel.getNews(NEWS_APP_ID)
 //        viewModel.newsResponse.observe(this, Observer { response ->

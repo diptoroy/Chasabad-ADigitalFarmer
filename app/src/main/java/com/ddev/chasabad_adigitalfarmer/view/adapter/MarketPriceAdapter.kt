@@ -3,15 +3,20 @@ package com.ddev.chasabad_adigitalfarmer.view.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.ddev.chasabad_adigitalfarmer.R
+import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
 import com.ddev.chasabad_adigitalfarmer.model.marketPrice.MarketPriceData
 import kotlinx.android.synthetic.main.market_price_row.view.*
+import java.util.logging.Filter
 
-class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>() {
+class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>(),Filterable {
     private var marketPriceList = emptyList<MarketPriceData>()
+    private var searchList = emptyList<MarketPriceData>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.market_price_row,parent,false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.market_price_row, parent, false)
         return ViewHolder(view)
     }
 
@@ -30,13 +35,14 @@ class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>()
         return marketPriceList.size
     }
 
-    fun setData(newList: List<MarketPriceData>){
+    fun setData(newList: List<MarketPriceData>) {
         notifyDataSetChanged()
-         marketPriceList= newList
+        marketPriceList = newList
+        this.searchList = newList
         notifyDataSetChanged()
     }
 
-    private fun setUpDown(holder: ViewHolder, position: Int){
+    private fun setUpDown(holder: ViewHolder, position: Int) {
         when {
             marketPriceList[position].productCurrentSellPrice > marketPriceList[position].productPreviousSellPrice -> {
                 holder.itemView.ts_signal.visibility = View.VISIBLE
@@ -66,6 +72,38 @@ class MarketPriceAdapter : RecyclerView.Adapter<MarketPriceAdapter.ViewHolder>()
         }
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
+    @ExperimentalStdlibApi
+    override fun getFilter(): android.widget.Filter {
+        return object : android.widget.Filter() {
+            override fun performFiltering(charSequence: CharSequence?): FilterResults {
+
+                var filterResult = FilterResults()
+                if (charSequence == null || charSequence.length < 0) {
+                    filterResult.count = searchList.size
+                    filterResult.values = searchList
+                } else {
+                    var searchChar: String = charSequence.toString().toLowerCase()
+                    val list = ArrayList<MarketPriceData>()
+                    for (item in searchList){
+                        if (item.productName.lowercase().contains(searchChar) || item.productName.lowercase().contains(searchChar)){
+                            list.add(item)
+                        }
+                    }
+                    filterResult.count = list.size
+                    filterResult.values = list
+                }
+                return filterResult
+            }
+
+
+            override fun publishResults(c0: CharSequence?, results: FilterResults?) {
+                marketPriceList = results!!.values as ArrayList<MarketPriceData>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 }
 

@@ -17,8 +17,19 @@
         android:theme="@style/Theme.ChasabadADigitalFarmer"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".view.activity.RegisterActivity">
+        <activity
+            android:name=".view.activity.QuestionAddActivity"
+            android:parentActivityName=".view.activity.QuestionActivity"></activity>
+        <activity
+            android:name=".view.activity.QuestionActivity"
+            android:parentActivityName=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.SignUpActivity" />
+        <activity android:name=".view.activity.SignInActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".view.activity.FarmingDetailsActivity" />
         <activity
@@ -46,13 +57,7 @@
             android:name=".view.activity.MarketPriceActivity"
             android:parentActivityName=".view.activity.MainActivity" />
         <activity android:name=".view.activity.CropDetailsActivity" />
-        <activity android:name=".view.activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".view.activity.MainActivity" />
     </application>
 
 </manifest>

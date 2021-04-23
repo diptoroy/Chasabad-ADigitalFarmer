@@ -73,7 +73,7 @@ class MenuAdapter : RecyclerView.Adapter<MenuAdapter.ViewHolder>() {
                 }
                 7 -> {
                     Log.d("clicked!", position.toString())
-                    val intent = Intent(holder.itemView.context, ArticleActivity::class.java)
+                    val intent = Intent(holder.itemView.context, QuestionActivity::class.java)
                     intent.putExtra("name", menuList[position].menuName)
                     holder.itemView.context.startActivity(intent)
                 }

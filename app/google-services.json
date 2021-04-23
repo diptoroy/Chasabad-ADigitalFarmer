@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "153696092950",
+    "project_id": "chasabad-5425b",
+    "storage_bucket": "chasabad-5425b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:153696092950:android:2a29b0b559d411f955c637",
+        "android_client_info": {
+          "package_name": "com.ddev.chasabad_adigitalfarmer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "153696092950-53hbhut48utmd1s54e97n28gtc1ucpkc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4xsUHS4FtOVOUQR-gW2EHGhp_Udd_J6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "153696092950-53hbhut48utmd1s54e97n28gtc1ucpkc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

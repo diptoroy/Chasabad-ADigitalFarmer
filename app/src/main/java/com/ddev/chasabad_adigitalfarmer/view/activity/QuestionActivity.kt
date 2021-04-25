@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.question.QuestionData
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.QuestionOnClickListener
 import com.ddev.chasabad_adigitalfarmer.view.adapter.QuestionAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentChange
@@ -17,11 +18,11 @@ import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_crop.*
 import kotlinx.android.synthetic.main.activity_question.*
 
-class QuestionActivity : AppCompatActivity() {
+class QuestionActivity : AppCompatActivity(),QuestionOnClickListener {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private val questionAdapter by lazy { QuestionAdapter() }
+    private val questionAdapter by lazy { QuestionAdapter(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,7 @@ class QuestionActivity : AppCompatActivity() {
             startActivity(i)
         }
 
-        db.collection("question").addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
+        db.collection("Question").addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
 
             if (querySnapshot != null) {
                 for (doc: DocumentChange in querySnapshot.documentChanges){
@@ -64,12 +65,17 @@ class QuestionActivity : AppCompatActivity() {
         question_recyclerview.adapter = questionAdapter
     }
 
-//    override fun onClick(item: QuestionData, position: Int) {
-//        val intent = Intent(this,AnswerActivity::class.java)
-//        intent.putExtra("question",item.question)
-//        intent.putExtra("answer",item.answer)
-//        startActivity(intent)
-//        Toast.makeText(this,"$position", Toast.LENGTH_SHORT).show()
-//        Log.d("clicked","$position")
-//    }
+    override fun onClick(item: QuestionData, position: Int) {
+        val intent = Intent(this,QuestionAddActivity::class.java)
+        intent.putExtra("question",item.question)
+        intent.putExtra("answer",item.answer)
+        intent.putExtra("questionId",item.questionId)
+//        intent.putExtra("image",item.questionImage)
+        startActivity(intent)
+        Toast.makeText(this,"$position",Toast.LENGTH_SHORT).show()
+        Log.d("clicked","$position")
+        Log.d("questionId","${item.questionId}")
+    }
+
+
 }

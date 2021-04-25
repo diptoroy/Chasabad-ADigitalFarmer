@@ -11,10 +11,10 @@ import com.ddev.chasabad_adigitalfarmer.util.clickListener.QuestionOnClickListen
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.question_row.view.*
 
-class QuestionAdapter() : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
+class QuestionAdapter(private val questionOnClickListener: QuestionOnClickListener) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
     private var questionList = emptyList<QuestionData>()
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val admin = "DHIsHa2tUNMjv9DWrjdEuJIG0vP2"
+    private val admin = "LTgFcxXkX5RuZMS4kms7zwRrVp72"
     private val currentUser: String = mAuth.currentUser.uid
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.question_row, parent, false)
@@ -31,14 +31,14 @@ class QuestionAdapter() : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
 //        com.bumptech.glide.Glide.with(holder.itemView.context).load([position].actorDetails?.get(position)?.actorImage).into(holder.itemView.actorImage)
 //
 //
-//        if (currentUser == admin) {
-//
-//            holder.itemView.setOnClickListener {
-//                onClickListener.onClick(questionList[position], position)
-//            }
-//        }else{
-//
-//        }
+        if (currentUser == admin) {
+
+            holder.itemView.setOnClickListener {
+                questionOnClickListener.onClick(questionList[position], position)
+            }
+        }else{
+
+        }
 
 
     }

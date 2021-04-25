@@ -110,5 +110,11 @@
     <string name="question_bank_text">Question Bank</string>
     <string name="question_bank_details">Question Bank</string>
 
+    <string name="profile_name">Jhon Doe</string>
+    <string name="profile_email">jhonDoe@email.com</string>
+    <string name="profile_occupation">Farmer</string>
+    <string name="profile_phone">+09873456781</string>
+    <string name="profile_question">My Question</string>
+
 
 </resources>

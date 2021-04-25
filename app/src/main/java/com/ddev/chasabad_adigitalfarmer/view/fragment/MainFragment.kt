@@ -24,6 +24,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
@@ -49,6 +50,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -101,7 +103,14 @@ class MainFragment : Fragment() {
             getCurrentLocation()
         }
 
+        //profile fragment
+        profile_btn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_profileFragment)
+        }
+
     }
+
+
 
     private fun setupTipsRecyclerView() {
         tips_recyclerview.layoutManager = LinearLayoutManager(
@@ -321,12 +330,17 @@ class MainFragment : Fragment() {
                     val sunrise: String = timeFormat.format(rDate)
                     val sunset: String = timeFormat.format(sDate)
 
-                    pressaure_text.text = "$pressure%"
-                    wind_text.text = "$wind km/h"
-                    humidity_yext.text = "$humidity%"
-                    tempText.text = "$temperature ° C"
-                    riseText.text = sunrise
-                    setText.text = sunset
+                    try {
+                        pressaure_text.text = "$pressure%"
+                        wind_text.text = "$wind km/h"
+                        humidity_yext.text = "$humidity%"
+                        tempText.text = "$temperature ° C"
+                        riseText.text = sunrise
+                        setText.text = sunset
+                    }catch (e:Exception){
+
+                    }
+
                     if (uvi != null) {
                         if (uvi > uvIndex) {
                             createNotificationChannel()

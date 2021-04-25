@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.user.UserData
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_sign_up.*
 
@@ -15,6 +16,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var dbRef: DocumentReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +24,7 @@ class SignUpActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+
 
         signup_btn.setOnClickListener {
             val userName: String = username_edit.text.toString().trim()
@@ -62,11 +65,15 @@ class SignUpActivity : AppCompatActivity() {
                     val uId: String = mAuth.uid.toString()
                     val userData = UserData(userName, uId, email, password, occupation, mobile)
 
-                    db.collection("UserData")
-                        .add(userData)
-                        .addOnSuccessListener { data ->
-                            Log.d("details saved in db", "$data")
-                        }
+                    dbRef = db.collection("UserData").document(uId)
+                    dbRef.set(userData).addOnCompleteListener {
+                        Log.d("details saved in db", "$it")
+                    }
+
+//                        .add(userData)
+//                        .addOnSuccessListener { data ->
+//                            Log.d("details saved in db", "$data")
+//                        }
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(this, "account created", Toast.LENGTH_SHORT).show()

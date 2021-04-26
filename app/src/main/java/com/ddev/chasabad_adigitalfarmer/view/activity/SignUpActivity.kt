@@ -63,6 +63,7 @@ class SignUpActivity : AppCompatActivity() {
             .addOnCompleteListener { it ->
                 if (it.isSuccessful) {
                     val uId: String = mAuth.uid.toString()
+                    val image: String = "image"
                     val userData = UserData(userName, uId, email, password, occupation, mobile)
 
                     dbRef = db.collection("UserData").document(uId)

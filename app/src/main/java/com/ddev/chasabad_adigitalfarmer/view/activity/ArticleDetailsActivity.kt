@@ -24,6 +24,6 @@ class ArticleDetailsActivity : AppCompatActivity() {
                 bundle!!.getString("description") +
                 bundle!!.getString("content")
         article_details_details.text = all
-        Glide.with(this).load(bundle.getString("image")).into(articledetails_image);
+        Glide.with(this).load(bundle.getString("image")).into(articledetails_image)
     }
 }

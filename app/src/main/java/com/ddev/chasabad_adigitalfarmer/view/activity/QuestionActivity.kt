@@ -11,10 +11,7 @@ import com.ddev.chasabad_adigitalfarmer.model.question.QuestionData
 import com.ddev.chasabad_adigitalfarmer.util.clickListener.QuestionOnClickListener
 import com.ddev.chasabad_adigitalfarmer.view.adapter.QuestionAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.activity_crop.*
 import kotlinx.android.synthetic.main.activity_question.*
 
@@ -44,7 +41,7 @@ class QuestionActivity : AppCompatActivity(),QuestionOnClickListener {
             startActivity(i)
         }
 
-        db.collection("Question").addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
+        db.collection("Question").orderBy("time",Query.Direction.DESCENDING).addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
 
             if (querySnapshot != null) {
                 for (doc: DocumentChange in querySnapshot.documentChanges){

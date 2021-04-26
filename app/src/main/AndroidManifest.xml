@@ -17,9 +17,10 @@
         android:theme="@style/Theme.ChasabadADigitalFarmer"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".view.activity.SplashActivity"></activity>
         <activity
             android:name=".view.activity.QuestionAddActivity"
-            android:parentActivityName=".view.activity.QuestionActivity"></activity>
+            android:parentActivityName=".view.activity.QuestionActivity" />
         <activity
             android:name=".view.activity.QuestionActivity"
             android:parentActivityName=".view.activity.MainActivity" />

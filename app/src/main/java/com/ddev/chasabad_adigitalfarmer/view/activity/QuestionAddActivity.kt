@@ -23,7 +23,7 @@ class QuestionAddActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var storageReference: StorageReference
     private lateinit var resultUri: Uri
-    private val admin: String = "LTgFcxXkX5RuZMS4kms7zwRrVp72"
+    private val admin: String = "XAQT5Pbde7gRFE2AfqSUDN6eD0g1"
     private lateinit var  questionId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,10 +62,12 @@ class QuestionAddActivity : AppCompatActivity() {
                 val qId: String = questionId
                 Log.d("question id is","$qId")
                 updateQuestion(qId, question, answer)
+                finish()
             }else{
                 delete_btn.visibility = View.INVISIBLE
                 val qId: String = UUID.randomUUID().toString()
                 addQuestion(qId,question, answer)
+                finish()
             }
         }
 

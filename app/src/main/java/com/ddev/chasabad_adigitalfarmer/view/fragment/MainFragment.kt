@@ -50,6 +50,9 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
@@ -100,12 +103,18 @@ class MainFragment : Fragment() {
                 )
             }
         } else {
-            getCurrentLocation()
+            GlobalScope.launch {
+                getCurrentLocation()
+            }
         }
 
         //profile fragment
         profile_btn.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_profileFragment)
+        }
+
+        setting_btn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_settingFragment)
         }
 
     }
@@ -241,14 +250,17 @@ class MainFragment : Fragment() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == REQUEST_PERMISSION_REQUEST_CODE && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getCurrentLocation()
+                GlobalScope.launch {
+                    getCurrentLocation()
+                }
+
             } else {
                 Toast.makeText(context, "Permission Denied!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun getCurrentLocation() {
+    private suspend fun getCurrentLocation() {
 
         var locationRequest = LocationRequest()
         locationRequest.interval = 10000

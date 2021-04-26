@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.question_row.view.*
 class QuestionAdapter(private val questionOnClickListener: QuestionOnClickListener) : RecyclerView.Adapter<QuestionAdapter.ViewHolder>() {
     private var questionList = emptyList<QuestionData>()
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val admin = "LTgFcxXkX5RuZMS4kms7zwRrVp72"
+    private val admin = "XAQT5Pbde7gRFE2AfqSUDN6eD0g1"
     private val currentUser: String = mAuth.currentUser.uid
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.question_row, parent, false)
@@ -24,6 +24,7 @@ class QuestionAdapter(private val questionOnClickListener: QuestionOnClickListen
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.itemView.question_text.text = questionList[position].question.toString()
         holder.itemView.answer_text.text = questionList[position].answer.toString()
+        holder.itemView.user_text.text = questionList[position].userId.toString()
         holder.itemView.time_text.text = questionList[position].time?.let { TimeConverter.getTimeAgo(it) }
 //        Glide.with(holder.itemView.context).load(questionList[position].image)
 //            .into(holder.itemView.question_image)

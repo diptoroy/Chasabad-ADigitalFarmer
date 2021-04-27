@@ -30,12 +30,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.model.MenuData
 import com.ddev.chasabad_adigitalfarmer.model.event.EventData
+import com.ddev.chasabad_adigitalfarmer.model.question.QuestionData
 import com.ddev.chasabad_adigitalfarmer.model.tips.TipsData
 import com.ddev.chasabad_adigitalfarmer.repository.Repository
 import com.ddev.chasabad_adigitalfarmer.util.Constants
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_ID
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.REQUEST_PERMISSION_REQUEST_CODE
 import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.uvIndex
+import com.ddev.chasabad_adigitalfarmer.util.clickListener.EventOnClickListener
 import com.ddev.chasabad_adigitalfarmer.view.activity.SignInActivity
 import com.ddev.chasabad_adigitalfarmer.view.adapter.EventAdapter
 import com.ddev.chasabad_adigitalfarmer.view.adapter.MenuAdapter
@@ -47,6 +49,7 @@ import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.main_activity_up.*
 import kotlinx.android.synthetic.main.risesetlayout.*
@@ -68,6 +71,7 @@ class MainFragment : Fragment() {
     private val eventAdapter by lazy { EventAdapter() }
     private val tipsAdapter by lazy { TipsAdapter() }
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,11 +89,44 @@ class MainFragment : Fragment() {
         val viewModelFactory = MainFragmentViewModelFactory(repository)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainFragmentViewModel::class.java)
         mAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         setupMenuRecyclerView()
         setupEventRecyclerView()
         setupTipsRecyclerView()
 
+        // Event
+        val eventList = ArrayList<EventData>()
+
+        db.collection("Event").orderBy("eventCreateTime",Query.Direction.DESCENDING).addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
+
+            if (querySnapshot != null) {
+                for (doc: DocumentChange in querySnapshot.documentChanges){
+                    val eventData: EventData = doc.document.toObject(EventData::class.java)
+                    eventList.add(eventData)
+                    eventAdapter.setData(eventList)
+                }
+
+            }
+        }
+
+        // Tips
+
+        val tipsList = ArrayList<TipsData>()
+
+        db.collection("Tips").orderBy("tipsCreateTime",Query.Direction.DESCENDING).addSnapshotListener{ querySnapshot: QuerySnapshot?, firebaseFirestoreException: FirebaseFirestoreException? ->
+
+            if (querySnapshot != null) {
+                for (doc: DocumentChange in querySnapshot.documentChanges){
+                    val tipsData: TipsData = doc.document.toObject(TipsData::class.java)
+                    tipsList.add(tipsData)
+                    tipsAdapter.setData(tipsList)
+                }
+
+            }
+        }
+
+        // Permission
         if (context?.let {
                     ContextCompat.checkSelfPermission(
                         it, android.Manifest.permission.ACCESS_FINE_LOCATION
@@ -128,32 +165,13 @@ class MainFragment : Fragment() {
             false
         )
         tips_recyclerview.setHasFixedSize(true)
-        val tipsList = ArrayList<TipsData>()
-        tipsList.add(
-            TipsData(
-                "Agricultural Fair 2021",
-                "Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"
-            )
-        )
-        tipsList.add(
-            TipsData(
-                "Agricultural Fair 2021",
-                "Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"
-            )
-        )
-        tipsList.add(
-            TipsData(
-                "Agricultural Fair 2021",
-                "Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"
-            )
-        )
-        tipsList.add(
-            TipsData(
-                "Agricultural Fair 2021",
-                "Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"
-            )
-        )
-        tipsAdapter.setData(tipsList)
+//        val tipsList = ArrayList<TipsData>()
+//        tipsList.add(
+//            TipsData(
+//                "Agricultural Fair 2021",
+//                "Agricultural Fair 2021, Agricultural Fair 2021, Agricultural Fair 2021"
+//            )
+//        )
         tips_recyclerview.adapter = tipsAdapter
     }
 
@@ -164,63 +182,18 @@ class MainFragment : Fragment() {
             false
         )
         event_recyclerview.setHasFixedSize(true)
-        val eventList = ArrayList<EventData>()
-        eventList.add(
-            EventData(
-                "Agricultural Fair 2021",
-                "21",
-                "March",
-                R.drawable.developapp,
-                "Agricultural Fair 2021",
-                "Dr.Jhon Doe",
-                "London,England"
-            )
-        )
-        eventList.add(
-            EventData(
-                "Agricultural Fair 2021",
-                "21",
-                "March",
-                R.drawable.developapp,
-                "Agricultural Fair 2021",
-                "Dr.Jhon Doe",
-                "London,England"
-            )
-        )
-        eventList.add(
-            EventData(
-                "Agricultural Fair 2021",
-                "21",
-                "March",
-                R.drawable.developapp,
-                "Agricultural Fair 2021",
-                "Dr.Jhon Doe",
-                "London,England"
-            )
-        )
-        eventList.add(
-            EventData(
-                "Agricultural Fair 2021",
-                "21",
-                "March",
-                R.drawable.developapp,
-                "Agricultural Fair 2021",
-                "Dr.Jhon Doe",
-                "London,England"
-            )
-        )
-        eventList.add(
-            EventData(
-                "Agricultural Fair 2021",
-                "21",
-                "March",
-                R.drawable.developapp,
-                "Agricultural Fair 2021",
-                "Dr.Jhon Doe",
-                "London,England"
-            )
-        )
-        eventAdapter.setData(eventList)
+//        val eventList = ArrayList<EventData>()
+//        eventList.add(
+//            EventData(
+//                "Agricultural Fair 2021",
+//                "21",
+//                "March",
+//                "Agricultural Fair 2021",
+//                "Dr.Jhon Doe",
+//                "London,England"
+//            )
+//        )
+
         event_recyclerview.adapter = eventAdapter
     }
 
@@ -395,29 +368,5 @@ class MainFragment : Fragment() {
         }
     }
 
-//    private fun checkUser(){
-//        val currentUser = mAuth.currentUser
-//        if (currentUser != null) {
-//            val uid = currentUser.uid
-//            val sharedPreferences: SharedPreferences? =
-//                activity?.getSharedPreferences("SP_USER", MODE_PRIVATE)
-//            val editor = sharedPreferences?.edit()
-//            editor?.putString("Current_UserID", uid)
-//            editor?.apply()
-//        }else{
-//            val intent = Intent(activity,SignInActivity::class.java)
-//            startActivity(intent)
-//        }
-//    }
-//
-//    override fun onStart() {
-//        checkUser()
-//        super.onStart()
-//    }
-//
-//    override fun onResume() {
-//        checkUser()
-//        super.onResume()
-//
-//    }
+
 }

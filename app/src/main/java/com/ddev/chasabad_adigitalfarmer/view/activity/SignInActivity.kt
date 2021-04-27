@@ -22,11 +22,25 @@ class SignInActivity : AppCompatActivity() {
         signin_btn_signin.setOnClickListener {
             val email: String = email_edit_signin.text.toString().trim()
             val password: String = password_edit_signin.text.toString().trim()
-            signInUser(email,password)
+            if (email.isEmpty()){
+                email_edit_signin.error = "Please enter your email"
+                email_edit_signin.requestFocus()
+            }else if(password.isEmpty()){
+                password_edit_signin.error = "Please enter your password"
+                password_edit_signin.requestFocus()
+            }else{
+                signInUser(email,password)
+            }
+
         }
 
         signup_btn_signin.setOnClickListener {
             val intent = Intent(this,SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
+        forgetPassword_btn.setOnClickListener {
+            val intent = Intent(this,ForgetPasswordActivity::class.java)
             startActivity(intent)
         }
     }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.ddev.chasabad_adigitalfarmer.R
@@ -26,7 +27,9 @@ import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.activity_article_details.*
 import kotlinx.android.synthetic.main.activity_question.*
+import kotlinx.android.synthetic.main.activity_question_add.*
 import kotlinx.android.synthetic.main.fragment_profile.*
+import java.lang.Exception
 
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
@@ -36,6 +39,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private lateinit var docSnap: DocumentReference
     private lateinit var storageReference: StorageReference
     private  var resultUri: Uri? = null
+    private val admin: String = "XAQT5Pbde7gRFE2AfqSUDN6eD0g1"
     private val pQuestionAdapter by lazy { ProfileQuestionAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -67,10 +71,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     val occupation = it.result.getString("occupation").toString()
                     val phone = it.result.getString("phone").toString()
 
-                    name_text.text = name
-                    email_text.text = email
-                    occupation_text.text = occupation
-                    phone_text.text = phone
+                    try {
+                        name_text.text = name
+                        email_text.text = email
+                        occupation_text.text = occupation
+                        phone_text.text = phone
+                    }catch (e: Exception){
+                        Log.d("exception : ","$e")
+                    }
+
 
                     Log.d("profile","$name")
                 } else {
@@ -127,6 +136,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         setUpQuestion()
+
+        //Admin
+        if (mAuth.currentUser.uid == admin){
+            admin_btn.visibility = View.VISIBLE
+        }else if(mAuth.currentUser.uid != admin){
+            admin_btn.visibility = View.INVISIBLE
+        }
+        admin_btn.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_adminFragment)
+        }
 
     }
 

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.fragment.EventFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:padding="12dp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_name_text" />
+
+            <EditText
+                android:id="@+id/eventname_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/event_name_text" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_date_text" />
+
+            <EditText
+                android:id="@+id/eventdate_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:layout_marginTop="5dp"
+                android:inputType="textPersonName"
+                android:hint="@string/event_date_text" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView34"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_month_text" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/eventmonth_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/event_month_text" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView35"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_time_text" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/eventtime_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/event_time_text" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView36"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_location_text" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/eventlocation_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/event_location_text" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/event_author_text" />
+
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/eventauthor_text"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="@string/event_author_text" />
+
+            <Button
+                android:id="@+id/eventsubmit_btn"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/submit_btn_text" />
+
+            <ProgressBar
+                android:visibility="invisible"
+                android:id="@+id/event_progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

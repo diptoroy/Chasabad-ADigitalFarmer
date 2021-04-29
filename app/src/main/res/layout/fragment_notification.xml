@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.TipsFragment">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragment.NotificationFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,39 +21,39 @@
             android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tips Title" />
+            android:text="@string/notification_name" />
 
         <EditText
-            android:id="@+id/tipstitle_text"
+            android:layout_marginTop="5dp"
+            android:id="@+id/notificationTitle_text"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="5dp"
             android:background="@drawable/custom_input"
             android:ems="10"
-            android:hint="Tips Title"
+            android:hint="@string/notification_name"
             android:inputType="textPersonName"
             android:padding="10dp" />
 
         <TextView
+            android:layout_marginTop="5dp"
             android:id="@+id/textView28"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tips Details"
-            android:layout_marginTop="5dp"/>
+            android:text="@string/notification_details" />
 
         <EditText
-            android:id="@+id/tipsDetails_text"
+            android:layout_marginTop="5dp"
+            android:id="@+id/notificationDetails_text"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:background="@drawable/custom_input"
             android:ems="10"
-            android:hint="Tips Details"
-            android:layout_marginTop="5dp"
+            android:hint="@string/notification_details"
             android:inputType="textPersonName"
             android:padding="10dp" />
 
         <Button
-            android:id="@+id/tipssubmit_btn"
+            android:id="@+id/notificationSubmit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -63,11 +61,12 @@
             android:textColor="@color/white" />
 
         <ProgressBar
-            android:id="@+id/tips_progressBar"
+            android:id="@+id/notification_progressBar"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

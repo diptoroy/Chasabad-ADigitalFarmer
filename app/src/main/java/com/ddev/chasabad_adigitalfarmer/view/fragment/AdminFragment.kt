@@ -10,9 +10,11 @@ import com.ddev.chasabad_adigitalfarmer.R
 import com.ddev.chasabad_adigitalfarmer.view.adapter.AdminPagerAdapter
 import com.ddev.chasabad_adigitalfarmer.view.adapter.ProfileQuestionAdapter
 import com.denzcoskun.imageslider.adapters.ViewPagerAdapter
+import kotlinx.android.synthetic.main.activity_news.*
 import kotlinx.android.synthetic.main.fragment_admin.*
 
 class AdminFragment : Fragment(R.layout.fragment_admin) {
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -24,6 +26,7 @@ class AdminFragment : Fragment(R.layout.fragment_admin) {
         val adapter = AdminPagerAdapter(childFragmentManager)
         adapter.addFragment(EventFragment(),"Event")
         adapter.addFragment(TipsFragment(),"Tips")
+        adapter.addFragment(NotificationFragment(),"Notification")
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
     }

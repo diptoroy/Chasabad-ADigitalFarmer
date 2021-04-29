@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Chasabad - A Digital Farmer</string>
+    <string name="app_title">Chasabad</string>
+    <string name="app_slogan">A Digital Farmer</string>
+    <string name="app_developer_text">Developed by</string>
+    <string name="app_developer">Dipto Roy</string>
     <string name="menu_one">Menu one</string>
     <string name="event_date">27</string>
     <string name="event_month">March</string>
@@ -124,5 +128,14 @@
     <string name="profile_phone">+09873456781</string>
     <string name="profile_question">My Question</string>
 
+    <string name="notification_name">Notification Title</string>
+    <string name="notification_details">Notification</string>
+
+    <string name="app_details_text">Application Details</string>
+    <string name="app_details">Chasabad is an agricultural app, It"'"s helping to the farmer. By using this app Farmer can see their location-based weather, because weather is important for agriculture. They also learn how to plant right, they can read agriculture articles. Also, make an own blog that can see another farmer. They get notifications when UV can damage their skin and other things. They can see the agriculture seminar and tips.</string>
+    <string name="app_details_developer">Developer: Dipto Roy</string>
+    <string name="app_details_email">Email: diptoroypersonal@gmail.com</string>
+    <string name="app_details_team">Adornment Campus</string>
+    <string name="app_details_contact">Contact Info</string>
 
 </resources>

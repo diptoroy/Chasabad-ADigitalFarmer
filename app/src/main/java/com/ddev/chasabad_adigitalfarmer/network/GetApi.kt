@@ -5,11 +5,14 @@ import com.ddev.chasabad_adigitalfarmer.model.crop.CropData
 import com.ddev.chasabad_adigitalfarmer.model.crop.CropFertilizer
 import com.ddev.chasabad_adigitalfarmer.model.news.Article
 import com.ddev.chasabad_adigitalfarmer.model.news.NewsData
+import com.ddev.chasabad_adigitalfarmer.model.notification.PushNotification
 import com.ddev.chasabad_adigitalfarmer.model.weatherDailyModel.WeatherUviData
 import com.ddev.chasabad_adigitalfarmer.model.weatherModel.WeatherData
+import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_CONTENT_KEY
+import com.ddev.chasabad_adigitalfarmer.util.Constants.Companion.NOTIFICATION_SERVER_KEY
+import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface GetApi {
     @GET("data/2.5/weather?")
@@ -39,5 +42,11 @@ interface GetApi {
 
     @GET("diptoroy/b0ba906381012532fc0926f764ee535e/raw/e2af193c0f040bd0ffb0f39f60bde023521a14d2/crop")
     suspend fun getCropData():List<CropData>
+
+    @Headers("Authorization: key=$NOTIFICATION_SERVER_KEY","Content-Type:$NOTIFICATION_CONTENT_KEY")
+    @POST("fcm/send")
+    suspend fun postNotification(
+        @Body notification: PushNotification
+    ):Response<ResponseBody>
 
 }

@@ -19,8 +19,14 @@ class Constants {
         //Article
         const val NEWS_BASE_URL = "https://newsapi.org/"
         const val NEWS_APP_ID = "44c8bbad59834d47ba7dd84f759e9086"
-
         const val FAKE_URL = "https://gist.githubusercontent.com/"
+
+        //Notification
+        const val NOTIFICATION_BASE_URL = "https://fcm.googleapis.com"
+        const val NOTIFICATION_SERVER_KEY = "AAAAI8kAQxY:APA91bGWj7q_Pvceo5hRtk2YJZf-dJ5eD3iq15Wx9RkafIV6dUhF0XOxUGAgPBdP3d2mMT06m0E0zu4eoFwtN0y69TwPoQml3fqDYTTWMBQ-uL56sdrrbsadF9zO8kTnpsRr_RvvT8ry"
+        const val NOTIFICATION_CONTENT_KEY = "application/json"
+        const val NOTIFICATION_TOPIC = "/topics/myTopic"
+        const val NOTIFICATION_CHANNEL_ID = "chasabad"
     }
 }
 
